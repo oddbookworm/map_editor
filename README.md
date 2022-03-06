@@ -1,0 +1,1 @@
+A map editor that exports to the specific json format that I use for my RPG.
