@@ -4,17 +4,19 @@ import pygame_gui as pg_g
 from lib.main_window import MainWindow
 
 def add_buttons(window):
-    button_rect = pg.Rect((350, 275), (100, 50))
-    text = 'Say Hello'
-    function = lambda: print('Hello World!')
-    window.add_button(button_rect, text, function)
+    # button_rect = pg.Rect((350, 275), (100, 50))
+    # text = 'Say Hello'
+    # function = lambda: print('Hello World!')
+    # window.add_button(button_rect, text, function)
 
-    button_rect = pg.Rect((450, 275), (125, 50))
-    text = 'Say Goodbye'
-    function = lambda: print('Goodbye World!')
-    window.add_button(button_rect, text, function)
+    # button_rect = pg.Rect((350, 275), (100, 50))
+    # text = 'Open Menu'
+    # function = lambda: window.menu.mainloop(window.screen)
+    # window.add_button(button_rect, text, function)
+    pass
 
 def main():
+    bg_color = '#000000'
     pg.init()
 
     pg.display.set_caption('Temp')
@@ -27,7 +29,7 @@ def main():
     add_buttons(window)
     
     background = pg.Surface(size)
-    background.fill(pg.Color('#FF0000'))
+    background.fill(pg.Color(bg_color))
 
     while True:
         dt = clock.tick(fps) / 1000.0
@@ -38,9 +40,14 @@ def main():
             window.handle_gui_event(event)
                     
         window.manager.update(dt)
+        if background.get_size() != window.screen.get_size():
+            background = pg.Surface(window.screen.get_size())
+            background.fill(pg.Color(bg_color))
 
         window.screen.blit(background, (0, 0))
         window.manager.draw_ui(window.screen)
+        window.draw_lines()
+        window.draw_test_tiles()
         
         pg.display.flip()
 
