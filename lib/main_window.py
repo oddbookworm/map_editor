@@ -2,6 +2,11 @@ import pygame as pg
 import pygame_gui as pg_g
 import pygame_menu as pg_m
 
+try:
+    from tile import Tile
+except ModuleNotFoundError:
+    from .tile import Tile
+
 class MainWindow:
     def __init__(self, size):
         self.screen = pg.display.set_mode(size, pg.RESIZABLE)
@@ -28,6 +33,16 @@ class MainWindow:
         line_1 = [(self.tile_select_width, 0), 
                     (self.tile_select_width, self.screen.get_size()[1])]
         pg.draw.line(self.screen, white, line_1[0], line_1[1])
+
+    def draw_tiles(self):
+        tiles = []
+        size = 32
+        gap = 5
+
+        width, height = (size * 3 + gap * 4, size * 10 + gap * 11)
+        self.tile_surf = pg.Surface((width, height))
+        for tile in tiles:
+            self.tile_surf.blit(tile.image, tile.rect)
 
     def draw_test_tiles(self):
         tiles = []
