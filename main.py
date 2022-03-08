@@ -9,10 +9,12 @@ def add_buttons(window):
     # function = lambda: print('Hello World!')
     # window.add_button(button_rect, text, function)
 
-    # button_rect = pg.Rect((350, 275), (100, 50))
-    # text = 'Open Menu'
-    # function = lambda: window.menu.mainloop(window.screen)
-    # window.add_button(button_rect, text, function)
+    window.test_menu()
+    button_rect = pg.Rect((350, 275), (100, 50))
+    text = 'Open Menu'
+    function = lambda: window.menu.mainloop(window.screen)
+    window.add_button(button_rect, text, function)
+
     pass
 
 def main():
@@ -47,7 +49,7 @@ def main():
         window.screen.blit(background, (0, 0))
         window.manager.draw_ui(window.screen)
         window.draw_lines()
-        window.draw_test_tiles()
+        # window.draw_test_tiles()
         
         pg.display.flip()
 
